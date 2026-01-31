@@ -2,23 +2,15 @@
 
 # WULPUS v1.2.2
 ## Wearable Ultra Low-Power Ultrasound
+> Independent fork by @Sergio5714 with enhanced reproduction instructions and minor improvements.
 
 # Introduction
 
-This repository contains the work in progress on the WULPUS ultrasound probe.
+This repository contains a stable release of WULPUS, a truly wearable ultra-low-power open research ultrasound platform.
 
-WULPUS is a truly wearable ultra-low-power open research ultrasound platform. 
+To date, more than 70 probes have been produced worldwide, and over 12 groups have used it in academic and industrial research.
 
-The probe has the following features:
-- **8 channels** (time-multiplexed)
-- **8 Msps** Analog-to-Digital converter (12 bit resolution)
-- **30.8 dB** Programable-Gain Amplifier + **10 dB** Operational Amplifier
-- **Bluetooth Low Energy** (BLE) wireless link (320 kbps throughput)
-- Up to **50 acquisitions per-second** (APS) (400 samples per acquisition, raw data streaming mode)
-- **Compactness and light weight** (46 x 25 mm footprint, 9 g)
-- **Ultra-Low Power** consumption of **22 mW** (raw data streaming mode, 50 APS)
-
-# WULPUS system diagram
+## System diagram
 
 WULPUS probe comprises two printed circuit boards (PCBs):
 - Acquisition PCB: featuring an ultrasound MCU (MSP430FR5043) and BLE MCU (nRF52832)
@@ -26,6 +18,18 @@ WULPUS probe comprises two printed circuit boards (PCBs):
 
 <img src="docs/images/wulpus_system_diagram.png" alt="WULPUS System Diagram" width="100%"/>
 WULPUS System Diagram
+
+## Specifications
+
+| Feature | Specification |
+| --- | --- |
+| Channels | 8 (time-multiplexed) |
+| ADC | 1 channel, up to 8 Msps, 12-bit resolution, approx. 1.4 MHz -3 dB bandwidth |
+| Analog front-end | 30.8 dB Programmable-Gain Amplifier + 10 dB Operational Amplifier |
+| Wireless link | Bluetooth Low Energy (BLE), 320 kbps throughput |
+| Acquisition rate | Up to 50 Hz PRF, 400 samples per acquisition (raw data streaming mode) |
+| Size & weight | 46 x 25 mm footprint, 9 g |
+| Power | 25 mW (raw data streaming mode, 50 Hz PRF) |
 
 # Structure of the repository
 
@@ -49,7 +53,7 @@ This repository has the following folders:
 
 The comprehensive [WULPUS User Manual](docs/wulpus_user_manual.pdf) can be found in the `docs/` folder. It covers everything about WULPUS, from assembly instructions to example measurements and troubleshooting, making the platform user-friendly for everyone, regardless of technical expertise.
 
-# How to reproduce?
+# Reproduction
 
 Please find the detailed instructions in chapter 2 of the [WULPUS User Manual](docs/wulpus_user_manual.pdf).
 
@@ -63,6 +67,14 @@ In a nutshell, to build your own instance of WULPUS, the following steps should 
 4. *Python dependencies installation on the host PC*<br>
    Follow the instructions in the `sw` folder to install the dependencies.
 
+## PCBWay projects for Acquisition and High-Voltage PCBs
+
+For convenient one-click PCB production and assembly, you can use the PCBWay shared projects (optional; DIY via the `hw` folder is also supported):
+- [WULPUS Acquisition Board](https://www.pcbway.com/project/shareproject/WULPUS_Acquisition_PCB_v1_2_2_f15bda6f.html)
+- [WULPUS HV MUX Board](https://www.pcbway.com/project/shareproject/WULPUS_High_Voltage_PCB_v1_1_1_2b755171.html)
+
+This option is convenient for outsourced PCB production and assembly, with an estimated **~1 month lead time** and a price of about **USD 180** per probe (Acquisition + HV PCB), based on mid-2025 pricing.
+
 # Usage
 
 Please refer to chapter 3 of the [WULPUS User Manual](docs/wulpus_user_manual.pdf) for detailed information.
@@ -70,10 +82,22 @@ Please refer to chapter 3 of the [WULPUS User Manual](docs/wulpus_user_manual.pd
 Starting a measurement with WULPUS can be accomplished in three simple steps:
 - Power up the probe, either from the micro-USB connector or from the battery connector
 - Connect the USB dongle to the host PC
-- Activate the Python environent, launch the Jupyter notebook located in `sw` folder, and follow the instructions in the notebook
+- Activate the Python environment, launch the Jupyter notebook located in `sw` folder, and follow the instructions in the notebook
 
 # Citation
-If you would like to reference the project, please cite the following paper:
+If you would like to cite the project, please use the following repository citation:
+
+```
+@misc{wulpus_repo_sergio5714_2026,
+  title={WULPUS: Wearable Ultra Low-Power Ultrasound (Independent Fork)},
+  author={Vostrikov, Sergei},
+  year={2026},
+  howpublished={GitHub repository},
+  url={https://github.com/Sergio5714/wulpus}
+}
+```
+
+If you prefer to cite the original scientific publication, please use:
 
 ```
 @inproceedings{frey2022wulpus,
@@ -99,14 +123,16 @@ If you would like to reference the project, please cite the following paper:
 
 # Authors
 
-The WULPUS system was developed at the [Integrated Systems Laboratory (IIS)](https://iis.ee.ethz.ch/) at ETH Zurich by:
+This fork is maintained independently by @Sergio5714 ([Sergei Vostrikov](https://scholar.google.com/citations?user=a0KNUooAAAAJ&hl=en)).
+
+The WULPUS system was originally developed at the [Integrated Systems Laboratory (IIS)](https://iis.ee.ethz.ch/) at ETH Zurich by:
 - [Sergei Vostrikov](https://scholar.google.com/citations?user=a0KNUooAAAAJ&hl=en) (Firmware, Software, Open-Sourcing, Documentation)
 - [Sebastian Frey](https://scholar.google.com/citations?user=7jhiqz4AAAAJ&hl=en) (Firmware, PCB design, Documentation)
+- [Cédric Hirschi](https://www.linkedin.com/in/c%C3%A9dric-cyril-hirschi-09624021b/) (GUI, Documentation)
 - [Luca Benini](https://scholar.google.com/citations?hl=en&user=8riq3sYAAAAJ) (Supervision, Conceptualization)
 - [Andrea Cossettini](https://scholar.google.com/citations?user=d8O91jIAAAAJ&hl=en) (Supervision, Project administration)
 
 Thanks to all the people who contributed to the WULPUS platform:
-- [Cédric Hirschi](https://www.linkedin.com/in/c%C3%A9dric-cyril-hirschi-09624021b/) (GUI improvements, Documentation)
 - [Josquin Tille](https://www.linkedin.com/in/josquin-tille-829a341a7/) (Silicone package design, Documentation)
 - [William Bruderer](https://www.linkedin.com/in/william-bruderer-59ba9b26b/) (Documentation)
 
