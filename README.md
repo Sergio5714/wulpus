@@ -1,31 +1,55 @@
-<img src="docs/images/wulpus_main.png" alt="WULPUS main" width="100%"/>
+# WULPUS
+## Wearable Ultra‑Low‑Power Ultrasound (v1.2.3)
+> Independent fork by @Sergio5714 with enhanced reproduction instructions and minor improvements.
 
-# WULPUS v1.2.2
-## Wearable Ultra Low-Power Ultrasound
+<img src="docs/images/v1_2_2/wulpus_1_2_2_main.jpg" alt="WULPUS main" width="100%"/>
 
 # Introduction
 
-This repository contains the work in progress on the WULPUS ultrasound probe.
+This repository contains a stable release of WULPUS, a truly wearable ultra-low-power open research ultrasound platform.
 
-WULPUS is a truly wearable ultra-low-power open research ultrasound platform. 
+To date, more than 70 probes have been produced worldwide, and over 12 groups have used it in academic and industrial research.
 
-The probe has the following features:
-- **8 channels** (time-multiplexed)
-- **8 Msps** Analog-to-Digital converter (12 bit resolution)
-- **30.8 dB** Programable-Gain Amplifier + **10 dB** Operational Amplifier
-- **Bluetooth Low Energy** (BLE) wireless link (320 kbps throughput)
-- Up to **50 acquisitions per-second** (APS) (400 samples per acquisition, raw data streaming mode)
-- **Compactness and light weight** (46 x 25 mm footprint, 9 g)
-- **Ultra-Low Power** consumption of **22 mW** (raw data streaming mode, 50 APS)
-
-# WULPUS system diagram
+## System diagram
 
 WULPUS probe comprises two printed circuit boards (PCBs):
-- Acquisition PCB: featuring an ultrasound MCU (MSP430FR5043) and BLE MCU (nRF52832)
-- High-Voltage PCB: featuring a High-voltage multiplexer (HV MUX), a transmit/receive switch, and a MOSFET driver.
+- **Acquisition PCB**: featuring an ultrasound MCU (MSP430FR5043) and BLE MCU (nRF52832)
+- **High-Voltage PCB**: featuring a High-voltage multiplexer (HV MUX), a transmit/receive switch, and a MOSFET driver.
 
-<img src="docs/images/wulpus_system_diagram.png" alt="WULPUS System Diagram" width="100%"/>
-WULPUS System Diagram
+<p align="center">
+  <img src="docs/images/wulpus_system_diagram.png" alt="WULPUS System Diagram" width="80%"/>
+  <br/>
+  WULPUS System Diagram
+</p>
+
+## Hardware photos
+Hardware unchanged from v1.2.2; photos show Acquisition PCB v1.2.2 and HV MUX PCB v1.1.1.
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img src="docs/images/v1_2_2/acquisition_pcb_1_2_2_top.jpg" alt="Acquisition PCB v1.2.2 top" width="100%"/>
+      <br/>
+      Acquisition PCB (v1.2.2, top)
+    </td>
+    <td width="50%" align="center">
+      <img src="docs/images/v1_2_2/hv_mux_pcb_1_1_1_top.jpg" alt="HV MUX PCB v1.1.1 top" width="100%"/>
+      <br/>
+      HV MUX PCB (v1.1.1, top)
+    </td>
+  </tr>
+</table>
+
+## Specifications
+
+| Feature | Specification |
+| --- | --- |
+| Channels | 8 (time-multiplexed) |
+| ADC | 1 channel, up to 8 Msps, 12-bit resolution, approx. 1.4 MHz -3 dB bandwidth |
+| Analog front-end | 30.8 dB Programmable-Gain Amplifier + 10 dB Operational Amplifier |
+| Wireless link | Bluetooth Low Energy (BLE), 320 kbps throughput |
+| Acquisition rate | Up to 50 Hz PRF, 400 samples per acquisition (raw data streaming mode) |
+| Size & weight | 46 x 25 mm footprint, 9 g |
+| Power | 25 mW (raw data streaming mode, 50 Hz PRF) |
 
 # Structure of the repository
 
@@ -49,7 +73,7 @@ This repository has the following folders:
 
 The comprehensive [WULPUS User Manual](docs/wulpus_user_manual.pdf) can be found in the `docs/` folder. It covers everything about WULPUS, from assembly instructions to example measurements and troubleshooting, making the platform user-friendly for everyone, regardless of technical expertise.
 
-# How to reproduce?
+# Build Instructions
 
 Please find the detailed instructions in chapter 2 of the [WULPUS User Manual](docs/wulpus_user_manual.pdf).
 
@@ -57,11 +81,19 @@ In a nutshell, to build your own instance of WULPUS, the following steps should 
 1. *PCBs manufacturing and assembly*<br>
    You can find the design files (Altium source files, schematics, bills of materials) under the `hw` folder.
 2. *Flashing MSP430 firmware*<br>
-   You can find the instructions on seting-up the toolchain, compiling the firmware and flashing the MSP430 MCU in the `fw/msp430` folder.
+   You can find the instructions on setting-up the toolchain, compiling the firmware and flashing the MSP430 MCU in the `fw/msp430` folder.
 3. *Flashing nRF52 MCU and USB dongle firmware*<br>
    You can find the instructions on setting-up the toolchain, compiling the firmware, flashing the nRF52 MCU and USB dongle in the `fw/nrf52` folder.
 4. *Python dependencies installation on the host PC*<br>
    Follow the instructions in the `sw` folder to install the dependencies.
+
+## PCBWay shared projects for WULPUS PCBs
+
+For convenient one-click PCB production and assembly, you can use the PCBWay shared projects (optional; DIY via the `hw` folder is also supported):
+- [WULPUS Acquisition Board](https://www.pcbway.com/project/shareproject/WULPUS_Acquisition_PCB_v1_2_2_f15bda6f.html)
+- [WULPUS HV MUX Board](https://www.pcbway.com/project/shareproject/WULPUS_High_Voltage_PCB_v1_1_1_2b755171.html)
+
+This option is convenient for outsourced PCB production and assembly, with an estimated **~1 month lead time** and a price of about **USD 180** per probe (Acquisition + HV PCB), based on mid-2025 pricing.
 
 # Usage
 
@@ -70,10 +102,22 @@ Please refer to chapter 3 of the [WULPUS User Manual](docs/wulpus_user_manual.pd
 Starting a measurement with WULPUS can be accomplished in three simple steps:
 - Power up the probe, either from the micro-USB connector or from the battery connector
 - Connect the USB dongle to the host PC
-- Activate the Python environent, launch the Jupyter notebook located in `sw` folder, and follow the instructions in the notebook
+- Activate the Python environment, launch the Jupyter notebook located in `sw` folder, and follow the instructions in the notebook
 
 # Citation
-If you would like to reference the project, please cite the following paper:
+If you would like to cite the project, please use the following repository citation:
+
+```
+@misc{wulpus_repo_sergio5714_2026,
+  title={WULPUS: Wearable Ultra Low-Power Ultrasound (Independent Fork)},
+  author={Vostrikov, Sergei},
+  year={2026},
+  howpublished={GitHub repository},
+  url={https://github.com/Sergio5714/wulpus}
+}
+```
+
+If you prefer to cite the original scientific publication, please use:
 
 ```
 @inproceedings{frey2022wulpus,
@@ -87,26 +131,28 @@ If you would like to reference the project, please cite the following paper:
 ```
 # Works that use WULPUS
 
-[1] Vostrikov, Sergei, et al. "Hand gesture recognition via wearable ultra-low power ultrasound and gradient-boosted tree classifiers." 2023 IEEE International Ultrasonics Symposium (IUS). IEEE, 2023.
+Selected highlights:
 
-[2] Vostrikov, Sergei, Luca Benini, and Andrea Cossettini. "Complete Cardiorespiratory Monitoring via Wearable Ultra Low Power Ultrasound." 2023 IEEE International Ultrasonics Symposium (IUS). IEEE, 2023.
+[1] Vostrikov S, Anderegg M, Benini L, Cossettini A. "Unsupervised Feature Extraction from Raw Data for Gesture Recognition with Wearable Ultra Low-Power Ultrasound." IEEE Transactions on Ultrasonics, Ferroelectrics, and Frequency Control. 2024 May 24.
 
-[3] Frey, Sebastian, et al. "A wearable ultra-low-power semg-triggered ultrasound system for long-term muscle activity monitoring." 2023 IEEE International Ultrasonics Symposium (IUS). IEEE, 2023.
+[2] Spacone G, Vostrikov S, Kartsch V, Benatti S, Benini L, Cossettini A. "Tracking of Wrist and Hand Kinematics with Ultra Low Power Wearable A-mode Ultrasound." IEEE Transactions on Biomedical Circuits and Systems. 2024 Sep 23.
 
-[4] Vostrikov S, Anderegg M, Benini L, Cossettini A. "Unsupervised Feature Extraction from Raw Data for Gesture Recognition with Wearable Ultra Low-Power Ultrasound." IEEE Transactions on Ultrasonics, Ferroelectrics, and Frequency Control. 2024 May 24.
+[3] Lu, Jinhao, et al. "Compact Low-Cost Wireless Ultrasonic System for Non-Destructive Testing and Wearables." 2025 IEEE International Ultrasonics Symposium (IUS). IEEE, 2025.
 
-[5] Spacone G, Vostrikov S, Kartsch V, Benatti S, Benini L, Cossettini A. "Tracking of Wrist and Hand Kinematics with Ultra Low Power Wearable A-mode Ultrasound." IEEE Transactions on Biomedical Circuits and Systems. 2024 Sep 23.
+Full list: see [docs/works.md](docs/works.md).
 
 # Authors
 
-The WULPUS system was developed at the [Integrated Systems Laboratory (IIS)](https://iis.ee.ethz.ch/) at ETH Zurich by:
-- [Sergei Vostrikov](https://scholar.google.com/citations?user=a0KNUooAAAAJ&hl=en) (Firmware, Software, Open-Sourcing, Documentation)
-- [Sebastian Frey](https://scholar.google.com/citations?user=7jhiqz4AAAAJ&hl=en) (Firmware, PCB design, Documentation)
+This fork is maintained independently by @Sergio5714 ([Sergei Vostrikov](https://scholar.google.com/citations?user=a0KNUooAAAAJ&hl=en)).
+
+The WULPUS system was originally developed at the [Integrated Systems Laboratory (IIS)](https://iis.ee.ethz.ch/) at ETH Zurich by:
+- [Sergei Vostrikov](https://scholar.google.com/citations?user=a0KNUooAAAAJ&hl=en) (Component Selection, Firmware, Software, Open-Sourcing, Documentation)
+- [Sebastian Frey](https://scholar.google.com/citations?user=7jhiqz4AAAAJ&hl=en) (PCB design, Firmware, Documentation)
+- [Cédric Hirschi](https://www.linkedin.com/in/c%C3%A9dric-cyril-hirschi-09624021b/) (GUI, Documentation)
 - [Luca Benini](https://scholar.google.com/citations?hl=en&user=8riq3sYAAAAJ) (Supervision, Conceptualization)
 - [Andrea Cossettini](https://scholar.google.com/citations?user=d8O91jIAAAAJ&hl=en) (Supervision, Project administration)
 
 Thanks to all the people who contributed to the WULPUS platform:
-- [Cédric Hirschi](https://www.linkedin.com/in/c%C3%A9dric-cyril-hirschi-09624021b/) (GUI improvements, Documentation)
 - [Josquin Tille](https://www.linkedin.com/in/josquin-tille-829a341a7/) (Silicone package design, Documentation)
 - [William Bruderer](https://www.linkedin.com/in/william-bruderer-59ba9b26b/) (Documentation)
 
@@ -120,10 +166,10 @@ The following files are released under Solderpad v0.51 (`SHL-0.51`) (see `hw/LIC
 
 - `hw/`
 
-The following files are released under Creative Commons Attribution 4.0 International
-License (`CC-BY-4.0`) (see `docs/images/LICENSE`):
-
-- `docs/images/`
+Images are licensed under Creative Commons, but not all under the same terms:
+- `docs/images/` is `CC-BY-4.0` by default (see `docs/images/LICENSE`)
+- `docs/images/v1_2_2/` is `CC-BY-ND-4.0` (no derivatives)
+See `docs/images/README.md` for details.
 
 The `fw/msp430/` and `fw/nrf52/` directories contain third-party sources that come with their own
 licenses. See the respective folders and source files for the licenses used.
