@@ -6,6 +6,18 @@ For the detailed description, please explore nested folders and corresponding CH
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.3] - 2026-02-09
+
+### Added
+
+- Links to the PCBWay shared projects for PCBs reproduction
+
+### Fixed
+
+### Changed
+
+- Refactored README.MD, added PCBs photos, updated specifications.
+
 ## [1.2.2] - 2025-03-23
 
 ### Added
