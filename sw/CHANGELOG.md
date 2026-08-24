@@ -5,7 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.2.4] - 2026-08-24
+
+### Added
+
+- Added `pyproject.toml` and `uv.lock` for reproducible Python dependency management.
+- Explicitly pinned `ipywidgets` and the Matplotlib-compatible `matplotlib-inline` version.
+
+### Changed
+
+- Replaced the Conda environment workflow with `uv` while preserving the existing direct dependency versions and Python 3.9.
+- Consolidated installation and notebook launch instructions in `sw/README.md`.
+
+### Removed
+
+- Removed the obsolete Conda `requirements.yml` and standalone dependency installation guide.
 
 ## [1.1.0] - 2024-02-21
 
@@ -35,6 +49,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Moved visualization to a separate thread.
 
 ### Removed
-- Removed `./docs` folder with the old GUI guide. The information about the GUI is now available in the WULPUS user manual.
 
-- 
+- Removed `./docs` folder with the old GUI guide. The information about the GUI is now available in the WULPUS user manual.
