@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Migrated Python dependency management in `sw` from Conda to `uv` and consolidated the setup instructions in `sw/README.md`.
+- Improved the main README with a table of contents.
 
 ### Removed
 

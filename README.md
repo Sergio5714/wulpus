@@ -1,8 +1,25 @@
 # WULPUS
-## Wearable Ultra‑Low‑Power Ultrasound (v1.2.3)
-> Independent fork by @Sergio5714 with enhanced reproduction instructions and minor improvements.
+## Wearable Ultra‑Low‑Power Ultrasound (v1.2.4)
+> Independent fork by @Sergio5714 with enhanced reproduction instructions and further improvements.
 
 <img src="docs/images/v1_2_2/wulpus_1_2_2_main.jpg" alt="WULPUS main" width="100%"/>
+
+## Table of contents
+
+- [Introduction](#introduction)
+  - [System diagram](#system-diagram)
+  - [Hardware photos](#hardware-photos)
+  - [Specifications](#specifications)
+- [Structure of the repository](#structure-of-the-repository)
+- [Documentation](#documentation)
+- [Build instructions](#build-instructions)
+  - [PCBWay shared projects](#pcbway-shared-projects-for-wulpus-pcbs)
+- [Usage](#usage)
+- [Citation](#citation)
+- [Works that use WULPUS](#works-that-use-wulpus)
+- [Authors](#authors)
+- [License](#license)
+- [Limitation of liability](#limitation-of-liability)
 
 # Introduction
 
